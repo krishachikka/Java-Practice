@@ -1,0 +1,35 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
+public class EmployeeService {
+    public static long calculateLOPs(String startDateLOP, String endDateLOP) throws ParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate start = LocalDate.parse(startDateLOP, formatter);
+        LocalDate end = LocalDate.parse(endDateLOP, formatter);
+        
+        // Using ChronoUnit to calculate the difference in days
+        long lops = ChronoUnit.DAYS.between(start, end) + 1;
+        return lops;
+    }
+
+    // Other fields and methods
+    public static void main(String[] args) {
+        try {
+            String startDate = "01/01/2022";
+            String endDate = "05/01/2022";
+
+            long lops = calculateLOPs(startDate, endDate);
+            System.out.println("Number of LOPs between the dates: " + lops);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+Output:
+
+Number of LOPs between the dates: 5

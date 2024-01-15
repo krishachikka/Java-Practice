@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        // Define an ArrayList of String
+        ArrayList<String> namesList = new ArrayList<>();
+
+        // Add four names to the ArrayList
+        namesList.add("Alice");
+        namesList.add("Bob");
+        namesList.add("Charlie");
+        namesList.add("David");
+
+        // Using ListIterator to traverse forward
+        System.out.println("Forward traversal:");
+        ListIterator<String> forwardIterator = namesList.listIterator();
+        while (forwardIterator.hasNext()) {
+            System.out.println(forwardIterator.next());
+        }
+
+        // Using ListIterator to traverse in reverse
+        System.out.println("\nReverse traversal:");
+        ListIterator<String> reverseIterator = namesList.listIterator(namesList.size());
+        while (reverseIterator.hasPrevious()) {
+            System.out.println(reverseIterator.previous());
+        }
+    }
+}
+
+Output:
+Forward traversal:
+Alice
+Bob
+Charlie
+David
+
+Reverse traversal:
+David
+Charlie
+Bob
+Alice

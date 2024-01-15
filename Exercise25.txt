@@ -1,0 +1,76 @@
+import java.util.HashSet;
+import java.util.Objects;
+
+class Student {
+    private String name;
+    private int rollNumber;
+
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public void setRollNumber(int rollNumber) {
+        this.rollNumber = rollNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", rollNumber=" + rollNumber +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return rollNumber == student.rollNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rollNumber);
+    }
+}
+
+public class hi {
+    public static void main(String[] args) {
+        // Create a HashSet to store Student objects
+        HashSet<Student> studentSet = new HashSet<>();
+
+        // Create Student objects
+        Student student1 = new Student("John", 101);
+        Student student2 = new Student("Alice", 102);
+        Student student3 = new Student("Bob", 101); // Duplicate rollNumber
+
+        // Add students to the HashSet
+        studentSet.add(student1);
+        studentSet.add(student2);
+        studentSet.add(student3);
+
+        // Print the contents of the HashSet
+        System.out.println("Students in HashSet:");
+        for (Student student : studentSet) {
+            System.out.println(student);
+        }
+    }
+}
+Output:
+Students in HashSet:
+Student{name='John', rollNumber=101}
+Student{name='Alice', rollNumber=102}

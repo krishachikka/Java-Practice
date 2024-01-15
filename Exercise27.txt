@@ -1,0 +1,46 @@
+import java.time.LocalDate;
+import java.time.Period;
+
+public class AgeFinder {
+    public int getAge(LocalDate dateOfBirth) {
+        LocalDate currentDate = LocalDate.now();
+        Period agePeriod = Period.between(dateOfBirth, currentDate);
+        return agePeriod.getYears();
+    }
+
+    public LocalDate getDateAfterNDays(int noOfDays) {
+        return LocalDate.now().plusDays(noOfDays);
+    }
+
+    public LocalDate getDateAfterXYearYMonthZDays(int year, int month, int day) {
+        return LocalDate.now().plus(Period.of(year, month, day));
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        AgeFinder ageFinder = new AgeFinder();
+
+        // Input for getAge()
+        LocalDate dateOfBirth = LocalDate.of(2004, 8, 17);
+        int age = ageFinder.getAge(dateOfBirth);
+        System.out.println("Your age is: " + age + " years");
+
+        // Input for getDateAfterNDays()
+        int noOfDays = 15;
+        LocalDate dateAfterNDays = ageFinder.getDateAfterNDays(noOfDays);
+        System.out.println("The date after " + noOfDays + " days is: " + dateAfterNDays);
+
+        // Input for getDateAfterXYearYMonthZDays()
+        int year = 1;
+        int month = 2;
+        int days = 3;
+        LocalDate dateAfterXYZDays = ageFinder.getDateAfterXYearYMonthZDays(year, month, days);
+        System.out.println("The date after " + year + " year, " + month + " months, and " + days + " days is: " + dateAfterXYZDays);
+    }
+}
+
+Output:
+
+Your age is: 19 years
+The date after 15 days is: 2024-01-22
+The date after 1 year, 2 months, and 3 days is: 2025-03-10

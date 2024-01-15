@@ -1,0 +1,68 @@
+interface DataProvider {
+    int totalMaximumMarks = 8000;
+
+    void calcPercentage();
+}
+
+class Intern implements DataProvider {
+    int marksSecured;
+    int graceMarks;
+
+    Intern(int marksSecured, int graceMarks) {
+        this.marksSecured = marksSecured;
+        this.graceMarks = graceMarks;
+    }
+
+    @Override
+    public void calcPercentage() {
+        int totalMarks = marksSecured + graceMarks;
+
+        if (totalMarks > totalMaximumMarks) {
+            System.out.println("Please enter the correct marks");
+        } else {
+            double percentage = (double) totalMarks / totalMaximumMarks * 100;
+            System.out.println("The total aggregate percentage secured is " + percentage);
+        }
+    }
+}
+
+class Trainee implements DataProvider {
+    int marksSecured;
+
+    Trainee(int marksSecured) {
+        this.marksSecured = marksSecured;
+    }
+
+    @Override
+    public void calcPercentage() {
+        if (marksSecured > totalMaximumMarks) {
+            System.out.println("Please enter the correct marks");
+        } else {
+            double percentage = (double) marksSecured / totalMaximumMarks * 100;
+            System.out.println("The total aggregate percentage secured is " + percentage);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Input for Intern
+        Intern intern = new Intern(5000, 500);
+        intern.calcPercentage();
+
+        // Input for Trainee
+        Trainee trainee = new Trainee(6000);
+        trainee.calcPercentage();
+
+        // Additional Input for Intern to demonstrate incorrect marks
+        Intern internIncorrectMarks = new Intern(8000, 500);
+        internIncorrectMarks.calcPercentage();
+    }
+}
+
+
+/*
+The total aggregate percentage secured is 68.75
+The total aggregate percentage secured is 75.0
+Please enter the correct marks
+ */

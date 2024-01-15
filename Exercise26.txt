@@ -1,0 +1,87 @@
+import java.util.TreeMap;
+
+class Student {
+    private String name;
+    private int rollNumber;
+    private int totalMarks;
+
+    public Student(String name, int rollNumber, int totalMarks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.totalMarks = totalMarks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public void setRollNumber(int rollNumber) {
+        this.rollNumber = rollNumber;
+    }
+
+    public int getTotalMarks() {
+        return totalMarks;
+    }
+
+    public void setTotalMarks(int totalMarks) {
+        this.totalMarks = totalMarks;
+    }
+
+    // Calculate grade based on total marks
+    public String calculateGrade() {
+        if (totalMarks >= 60) {
+            return "A";
+        } else if (totalMarks > 40) {
+            return "B";
+        } else {
+            return "C";
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", rollNumber=" + rollNumber +
+                ", totalMarks=" + totalMarks +
+                ", grade='" + calculateGrade() + '\'' +
+                '}';
+    }
+}
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        // Create a TreeMap to store Student grades with roll number as the key
+        TreeMap<Integer, String> studentGrades = new TreeMap<>();
+
+        // Create Student objects
+        Student student1 = new Student("John", 101, 75);
+        Student student2 = new Student("Alice", 102, 55);
+        Student student3 = new Student("Bob", 103, 35);
+
+        // Add students to the TreeMap
+        studentGrades.put(student1.getRollNumber(), student1.calculateGrade());
+        studentGrades.put(student2.getRollNumber(), student2.calculateGrade());
+        studentGrades.put(student3.getRollNumber(), student3.calculateGrade());
+
+        // Print the grade and roll number of each student from the TreeMap
+        System.out.println("Student Grades:");
+        for (Integer rollNumber : studentGrades.keySet()) {
+            System.out.println("Roll Number: " + rollNumber + ", Grade: " + studentGrades.get(rollNumber));
+        }
+    }
+}
+
+Output:
+Student Grades:
+Roll Number: 101, Grade: A
+Roll Number: 102, Grade: B
+Roll Number: 103, Grade: C

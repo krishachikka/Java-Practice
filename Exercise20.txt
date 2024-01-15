@@ -1,0 +1,103 @@
+// customer package
+package customer;
+
+public class Customer {
+    String customerId;
+    String address;
+    String phoneNo;
+
+    public Customer(String customerId, String address, String phoneNo) {
+        this.customerId = customerId;
+        this.address = address;
+        this.phoneNo = phoneNo;
+    }
+
+    public static void main(String[] args) {
+        // Main method for testing, if needed
+    }
+}
+
+
+
+
+
+
+
+
+// customer.typeofcustomer package
+package customer.typeofcustomer;
+
+import customer.Customer;
+import purchase.PurchaseBill;
+
+public class RegularCustomer extends Customer {
+
+    static int counter = 5000;
+
+    public RegularCustomer(String customerId, String address, String phoneNo) {
+        super(customerId, address, phoneNo);
+
+        // Print customer details
+        System.out.println("Bill ID: " + ++counter);
+        System.out.println("Customer ID: " + customerId);
+        System.out.println("Address: " + address);
+        System.out.println("Phone Number: " + phoneNo);
+
+    }
+
+    public static void main(String[] args) {
+        RegularCustomer r1 = new RegularCustomer("1001", "Calyx Residency, Papdy, Brahmin Ali", "12121212121");
+
+        PurchaseBill purchaseBill = new PurchaseBill();
+        int billAmount = purchaseBill.calculateBillAmount();
+
+        System.out.println("Bill Amount for Regular Customer: " + billAmount);
+    }
+}
+
+
+
+
+
+// customer.typeofcustomer package
+package customer.typeofcustomer;
+
+import customer.Customer;
+
+public class PrivilegedCustomer extends Customer {
+    public PrivilegedCustomer(String customerId, String address, String phoneNo) {
+        super(customerId, address, phoneNo);
+        
+    }
+}
+
+
+
+
+
+// purchase package
+package customer.typeofcustomer;
+
+import customer.Customer;
+
+public class PrivilegedCustomer extends Customer {
+    public PrivilegedCustomer(String customerId, String address, String phoneNo) {
+        super(customerId, address, phoneNo);
+        
+    }
+}
+
+
+
+
+
+/*
+
+Output:
+Bill ID: 5001
+Customer ID: 1001
+Address: Calyx Residency, Papdy, Brahmin Ali
+Phone Number: 12121212121
+Bill Amount for Regular Customer: 1872
+
+ */
